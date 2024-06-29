@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Mail\AppointmentMail;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -12,8 +14,7 @@ use App\Models\News;
 use Illuminate\Support\Facades\Notification;
 
 use App\Notifications\SendEmailNotification;
-
-
+use Illuminate\Support\Facades\Mail;
 
 class Admincontroller extends Controller
 {
@@ -111,7 +112,8 @@ class Admincontroller extends Controller
             'endpart' => $request->endpart
         ];
 
-        Notification::send($data, new SendEmailNotification($details));
+        Mail::to($data['email'])->send(new AppointmentMail($details));
+        // Notification::send($data, new SendEmailNotification($details));
         return redirect()->back();
 
     }
