@@ -112,7 +112,7 @@ class Admincontroller extends Controller
             'endpart' => $request->endpart
         ];
 
-        Mail::to($data['email'])->send(new AppointmentMail($details));
+        Mail::to($data['email'])->send(new AppointmentMail($details , $data));
         // Notification::send($data, new SendEmailNotification($details));
         return redirect()->back();
 
