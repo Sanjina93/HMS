@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CustomMailExampleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,5 +79,8 @@ Route::post('/upload_services', [AdminController::class, 'service']);
 Route::get('/detail', [AdminController::class, 'detail']);
 Route::post('/upload_details', [AdminController::class, 'upload_details']);
 Route::get('/showdetails', [AdminController::class, 'showdetails']);
+
+
+Route::get('/send/mail',[CustomMailExampleController::class,'sendTestMail']);
 
 
